@@ -3,7 +3,7 @@ import mysql.connector
 from mysql.connector import Error
 import re
 from conexion import conectar
-puerto_serial = 'COM3'    
+puerto_serial = 'COM9'    
 baud_rate = 9600
 # Llama a la función conectar desde el módulo conexion.py
 conexion = conectar()

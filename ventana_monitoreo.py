@@ -1,3 +1,4 @@
+import sys
 import tkinter as tk
 from tkinter import ttk, messagebox
 import mysql.connector
@@ -151,7 +152,7 @@ def actualizacion_automatica(tree, ultimo_id_label, status_label, insertar_fila)
         finally:
             if conexion: conexion.close()
 
-        tree.after(2000, lambda: actualizacion_automatica(tree, ultimo_id_label, status_label, insertar_fila))
+        tree.after(4000, lambda: actualizacion_automatica(tree, ultimo_id_label, status_label, insertar_fila))
 
 def limpiar_registros(tree, ultimo_id_label, status_label):
     """Limpia todos los registros de la tabla"""

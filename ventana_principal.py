@@ -139,7 +139,6 @@ btn_estado = tk.Button(
     fg=COLOR_TEXTO_BOTON, 
     width=15,
     height=1,
-    command=abrir_monitoreo 
 )
 btn_estado.pack(pady=5)
 
