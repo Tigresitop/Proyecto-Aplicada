@@ -37,7 +37,10 @@ def abrir_monitoreo():
         subprocess.Popen([sys.executable, "ventana_monitoreo.py"])
     except Exception as e:
         subprocess.Popen(["python", "ventana_monitoreo.py"])
-
+def ir_a_graficas():
+    # cierra esta ventana y lanza graficas.py
+    root.destroy()
+    subprocess.Popen([sys.executable, "graficas.py"])
 titulo = tk.Label(
     root, 
     text="CONTROL DE RIEGO", 
@@ -139,6 +142,7 @@ btn_estado = tk.Button(
     fg=COLOR_TEXTO_BOTON, 
     width=15,
     height=1,
+    command=ir_a_graficas
 )
 btn_estado.pack(pady=5)
 

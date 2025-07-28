@@ -293,8 +293,6 @@ def main():
         command=lambda: limpiar_registros(tree, ultimo_id_label, status_label)
     )
     boton_limpiar.pack(side=tk.RIGHT, padx=5, ipadx=5, ipady=3)
-    
-
     root.protocol("WM_DELETE_WINDOW", lambda: on_closing(root))
     actualizacion_automatica(tree, ultimo_id_label, status_label, insertar_fila_con_separador)
     root.mainloop()
