@@ -47,7 +47,7 @@ def obtener_datos_nuevos(conexion, desde_id):
         return []
     finally:
         if cursor: cursor.close()
- 
+
 def cargar_datos_iniciales(tree, insertar_fila):
     """Carga los datos iniciales en la tabla con separadores"""
     conexion = conectar()
@@ -214,8 +214,16 @@ def main():
     style.map("Treeview.Heading", background=[('active', '#388E3C')])
     main_frame = ttk.Frame(root, padding=10)
     main_frame.pack(fill=tk.BOTH, expand=True)
-    header = ttk.Label(main_frame, text="Monitoreo", font=("Helvetica", 14, "bold"))
-    header.pack(anchor="w", pady=(0,10))
+    # header = ttk.Label(main_frame, text="Monitoreo", font=("Helvetica", 14, "bold"))
+    # header.pack(anchor="w", pady=(0,10))
+    header = ttk.Label(
+    main_frame,
+    text="MONITOREO",
+    font=("Helvetica", 16, "bold"),
+    foreground="#0000FF",    # azul puro
+    background="#f0fff0"     # mismo fondo que tu ventana
+    )
+    header.pack(pady=(0, 10))
     table_frame = ttk.Frame(main_frame)
     table_frame.pack(fill=tk.BOTH, expand=True)
     scrollbar = ttk.Scrollbar(table_frame)
@@ -255,19 +263,20 @@ def main():
 
     try:
         img = tk.PhotoImage(file="refresh_icon.png")
+        icon_devolver = tk.PhotoImage(file="assets/devolver.png")
+        icon_devolver = icon_devolver.subsample(12, 12)
         img = img.subsample(10, 10) 
     except:
-        img = None
+        img = None  
     boton_volver = tk.Button(
     bottom_controls,
-    text="← Volver",
+    image=icon_devolver,
     bg="#AED581",
-    fg="#1B5E20",
-    font=("Helvetica", 9, "bold"),
     relief=tk.FLAT,
     command=lambda: volver_a_principal(root)
     )
-    boton_volver.pack(side=tk.LEFT, padx=5, ipadx=5, ipady=3)
+    boton_volver.image = icon_devolver
+    boton_volver.pack(side=tk.LEFT, padx=5, pady=5)
 
     boton_toggle = tk.Button(
         bottom_controls,

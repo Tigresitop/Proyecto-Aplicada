@@ -57,6 +57,27 @@ def crear_ventana_monitoreo():
     root.geometry("800x650")
     root.configure(bg=COLOR_FONDO)
 
+    try:
+        icon_actualizar = tk.PhotoImage(file="assets/actualizar.png").subsample(8,8)
+    except tk.TclError:
+        icon_actualizar = None
+
+    try:
+        icon_devolver = tk.PhotoImage(file="assets/devolver.png").subsample(8,8)
+    except tk.TclError:
+        icon_devolver = None
+    # ————————————————
+
+    # — Título centrado en azul —
+    lbl_titulo = tk.Label(
+        root,
+        text="HUMEDAD",
+        font=("Arial", 18, "bold"),
+        fg="blue",
+        bg=COLOR_FONDO
+    )
+    lbl_titulo.pack(pady=(10, 5))
+
     # --- Sección de filtro ---
     frame_filtro = ttk.LabelFrame(root, text="Filtrar por fecha y hora", padding=10)
     frame_filtro.pack(fill=tk.X, padx=20, pady=(20, 10))
@@ -122,15 +143,15 @@ def crear_ventana_monitoreo():
     # Botón de actualización manual (usa el mismo método sin parámetros)
     btn_actualizar = tk.Button(
         root,
-        text="ACTUALIZAR GRÁFICA",
-        font=("Arial", 12, "bold"),
+        image=icon_actualizar,
         bg=COLOR_BOTON,
-        fg=COLOR_TEXTO_BOTON,
+        bd=0,
         command=lambda: actualizar_grafica(
             ent_inicio.get() or None,
-            ent_fin.get() or None
+            ent_fin.get()   or None
         )
     )
+    btn_actualizar.image = icon_actualizar
     btn_actualizar.pack(side=tk.RIGHT, padx=20, pady=10)
 
     # Botón de regreso al menú
@@ -140,11 +161,12 @@ def crear_ventana_monitoreo():
 
     btn_volver = tk.Button(
         root,
-        text="VOLVER AL MENÚ",
-        font=("Arial", 12),
+        image=icon_devolver,
         bg="#f0f0f0",
+        bd=0,
         command=volver_menu
     )
+    btn_volver.image = icon_devolver
     btn_volver.pack(side=tk.LEFT, padx=20, pady=10)
 
     root.mainloop()

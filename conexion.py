@@ -8,3 +8,4 @@ def conectar():
         database="proyectofinal_aplicada"
     )
     return conexion
+
