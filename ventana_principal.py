@@ -19,7 +19,7 @@ try:
 except:
     custom_font = font.Font(family="Arial", size=12)
 
-imagen_fondo = Image.open("hierba.png")
+imagen_fondo = Image.open("assets/cesped.png")
 esquina_size = (int(600*0.3), int(400*0.3))
 imagen_fondo = imagen_fondo.resize(esquina_size, Image.Resampling.LANCZOS)
 imagen_fondo = ImageTk.PhotoImage(imagen_fondo)
